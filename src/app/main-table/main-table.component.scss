@@ -1,0 +1,35 @@
+table {
+    font-family: arial, sans-serif;
+    width: 100%;
+  }
+  
+//   tr:nth-child(even) {
+//     background-color: #dddddd;
+//   }
+  
+//   .mat-column-score {
+//     text-decoration-style: solid;
+//     font-weight: bold;
+//   }
+  
+//   .mat-header-cell {
+//     font-weight: bold;
+//     font-size:medium;
+//     background-color:darkcyan;
+//     color:white;
+//   }
+  
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+  
+//   .demo-row-is-clicked {
+//     font-weight: bold;
+//   }
+  
