@@ -12,7 +12,7 @@ export class TeamsService {
   constructor(private http: HttpClient) {}
 
   getTeams() {
-    var teams = this.http.get<TeamData[]>(environment.api_url + 'standings');
+    var teams = this.http.get<TeamData[]>('api/standings');
     console.log(teams);
     return teams;
   }
