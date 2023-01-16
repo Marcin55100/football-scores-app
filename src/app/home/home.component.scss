@@ -1,0 +1,24 @@
+  h4{
+    margin: 8px 64px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  .table-spacer {
+    margin-bottom: 5rem;
+  }
+
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }

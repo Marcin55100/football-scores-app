@@ -12,12 +12,18 @@ table {
 //     font-weight: bold;
 //   }
   
-//   .mat-header-cell {
-//     font-weight: bold;
-//     font-size:medium;
-//     background-color:darkcyan;
-//     color:white;
-//   }
+  // .mat-header-cell {
+  //   font-weight: bold;
+  //   font-size:medium;
+  //   background-color:darkcyan;
+  //   color:white;
+  // }
+
+  .mat-column-rank {
+    width: 32px;
+    text-align: center;
+    border-right: 1px solid currentColor;
+  }
   
   .mat-row .mat-cell {
     border-bottom: 1px solid transparent;
@@ -29,7 +35,7 @@ table {
     border-color: currentColor;
   }
   
-//   .demo-row-is-clicked {
-//     font-weight: bold;
-//   }
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
   

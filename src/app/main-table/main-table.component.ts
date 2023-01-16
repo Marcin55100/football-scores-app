@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs';
 import { TeamData } from '../core/models/team-data';
@@ -10,10 +11,12 @@ import { TeamsService } from '../core/services/teams.service';
   styleUrls: ['./main-table.component.scss'],
 })
 export class MainTableComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   public displayedColumns: string[] = ['rank', 'name', 'points'];
   public dataSource: MatTableDataSource<TeamData> = new MatTableDataSource(
     FAKE_TEAMS_DATA
   );
+  clickedRows = new Set<TeamData>();
 
   constructor(private teamsService: TeamsService) {
     console.log('main-table created');
@@ -26,6 +29,7 @@ export class MainTableComponent implements OnInit {
       .subscribe((data) => {
         console.log(data);
         this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
       });
   }
 }
