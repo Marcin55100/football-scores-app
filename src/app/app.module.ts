@@ -17,9 +17,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
-  declarations: [AppComponent, MainTableComponent, HeaderComponent, HomeComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    MainTableComponent,
+    HeaderComponent,
+    HomeComponent,
+    LoginComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +40,8 @@ import { LoginComponent } from './login/login.component';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [TeamsService],
   bootstrap: [AppComponent],
