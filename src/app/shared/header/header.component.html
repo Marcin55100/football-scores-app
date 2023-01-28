@@ -1,15 +1,17 @@
 <!-- Toolbar -->
 <p>
-    <mat-toolbar color="primary">
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <button mat-raised-button [routerLink]="'/home'" color="primary">Football App</button>
-    </mat-toolbar>
-  </p>
+  <mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-raised-button [routerLink]="'/home'" color="primary">
+      Football App
+    </button>
+  </mat-toolbar>
+</p>
 
-  <!-- Menu -->
+<!-- Menu -->
 <mat-menu #menu="matMenu">
-    <button [routerLink]="'/login'" mat-menu-item>Login</button>
-    <button mat-menu-item>My results</button>
-  </mat-menu>
+  <button [routerLink]="'/auth'" mat-menu-item>Login</button>
+  <button mat-menu-item>My results</button>
+</mat-menu>

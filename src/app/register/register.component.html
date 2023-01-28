@@ -1,9 +1,17 @@
 <mat-form-field class="login-form" appearance="fill">
-  <mat-label>Login</mat-label>
+  <mat-label>Name</mat-label>
   <input matInput />
 </mat-form-field>
 <mat-form-field class="login-form" appearance="fill">
-  <mat-label>Enter your password</mat-label>
+  <mat-label>Surname</mat-label>
+  <input matInput />
+</mat-form-field>
+<mat-form-field class="login-form" appearance="fill">
+  <mat-label>Email</mat-label>
+  <input matInput />
+</mat-form-field>
+<mat-form-field class="login-form" appearance="fill">
+  <mat-label>Create password</mat-label>
   <input matInput [type]="hide ? 'password' : 'text'" />
   <button
     mat-icon-button
@@ -15,4 +23,4 @@
     <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
   </button>
 </mat-form-field>
-<button mat-raised-button color="primary">Log In</button>
+<button mat-raised-button color="primary">Register</button>
