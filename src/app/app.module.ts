@@ -19,6 +19,10 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { RegisterComponent } from './register/register.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,8 @@ import { MatInputModule } from '@angular/material/input';
     HeaderComponent,
     HomeComponent,
     LoginComponent,
+    RegisterComponent,
+    AuthenticationComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,8 @@ import { MatInputModule } from '@angular/material/input';
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
+    MatTabsModule,
   ],
   providers: [TeamsService],
   bootstrap: [AppComponent],
