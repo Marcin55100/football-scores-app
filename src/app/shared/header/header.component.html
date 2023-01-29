@@ -13,5 +13,7 @@
 <!-- Menu -->
 <mat-menu #menu="matMenu">
   <button [routerLink]="'/auth'" mat-menu-item>Login</button>
-  <button mat-menu-item>My results</button>
+  <button [disabled]="isDisabled" [routerLink]="'/dashboard'" mat-menu-item>
+    My dashboard
+  </button>
 </mat-menu>

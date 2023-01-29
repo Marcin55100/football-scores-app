@@ -17,11 +17,10 @@ export class AuthenticationService {
     };
     console.log(loginUser);
 
-    return this.http
-      .post<LoginUser>('api/account/login', loginUser, {
-        observe: 'response',
-      })
-      .pipe(catchError(this.handleError));
+    return this.http.post<LoginUser>('api/account/login', loginUser, {
+      observe: 'response',
+    });
+    //.pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormControl,
@@ -8,6 +9,7 @@ import {
 import { AuthenticationService } from '../core/services/authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpStatusCode } from '@angular/common/http';
+import { LoginInfoService } from '../core/services/login-info.service';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +19,14 @@ import { HttpStatusCode } from '@angular/common/http';
 export class LoginComponent {
   hide = true;
   loginForm!: FormGroup;
+  isLogged = false;
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
+    private snackBar: MatSnackBar,
     private authService: AuthenticationService,
-    private _snackBar: MatSnackBar
+    private loginInfoService: LoginInfoService
   ) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
@@ -34,7 +39,7 @@ export class LoginComponent {
       this.tryLogin();
     } else {
       this.validateAllFormFields(this.loginForm);
-      this._snackBar.open('Invalid form', 'Close');
+      this.snackBar.open('Invalid form', 'Close');
     }
   }
 
@@ -51,10 +56,18 @@ export class LoginComponent {
   tryLogin() {
     this.authService
       .login(this.loginForm.value['email'], this.loginForm.value['password'])
-      .subscribe((response) => {
-        if (response.status == HttpStatusCode.Accepted) {
-          this._snackBar.open('Successfully logged', 'Close');
-        }
+      .subscribe({
+        next: (res) => {
+          if (res.status == HttpStatusCode.Accepted) {
+            this.snackBar.open('Logged successfully', 'Close');
+            this.isLogged = true;
+            this.loginInfoService.updateLoggedMesage(true);
+            this.router.navigate(['dashboard']);
+          }
+        },
+        error: (err) => {
+          this.snackBar.open('Login failed', 'Close');
+        },
       });
   }
 }

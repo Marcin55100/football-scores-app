@@ -28,6 +28,7 @@ import {
   MatSnackBarModule,
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
 } from '@angular/material/snack-bar';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {
     LoginComponent,
     RegisterComponent,
     AuthenticationComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
