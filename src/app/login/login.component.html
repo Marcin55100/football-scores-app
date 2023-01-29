@@ -1,18 +1,38 @@
-<mat-form-field class="login-form" appearance="fill">
-  <mat-label>Login</mat-label>
-  <input matInput />
-</mat-form-field>
-<mat-form-field class="login-form" appearance="fill">
-  <mat-label>Enter your password</mat-label>
-  <input matInput [type]="hide ? 'password' : 'text'" />
-  <button
-    mat-icon-button
-    matSuffix
-    (click)="hide = !hide"
-    [attr.aria-label]="'Hide password'"
-    [attr.aria-pressed]="hide"
-  >
-    <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-  </button>
-</mat-form-field>
-<button mat-raised-button color="primary">Log In</button>
+<form [formGroup]="loginForm">
+  <mat-form-field class="login-form" appearance="fill">
+    <mat-label>Login</mat-label>
+    <input formControlName="email" matInput />
+    <mat-hint
+      *ngIf="
+        loginForm.controls['email'].dirty &&
+        loginForm.hasError('required', 'email')
+      "
+      >Username is required</mat-hint
+    >
+  </mat-form-field>
+  <mat-form-field class="login-form" appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input
+      formControlName="password"
+      matInput
+      [type]="hide ? 'password' : 'text'"
+    />
+    <mat-hint
+      *ngIf="
+        loginForm.controls['password'].dirty &&
+        loginForm.hasError('required', 'password')
+      "
+      >Password is required</mat-hint
+    >
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+  </mat-form-field>
+  <button (click)="onLogin()" mat-raised-button color="primary">Log In</button>
+</form>
