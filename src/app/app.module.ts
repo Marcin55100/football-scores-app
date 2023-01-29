@@ -23,6 +23,11 @@ import { RegisterComponent } from './register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+  MatSnackBarModule,
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
@@ -50,8 +56,18 @@ import { AuthenticationComponent } from './authentication/authentication.compone
     MatInputModule,
     MatCardModule,
     MatTabsModule,
+    MatSnackBarModule,
   ],
-  providers: [TeamsService],
+  providers: [
+    TeamsService,
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {
+        duration: 2500,
+        verticalPosition: 'top',
+      },
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
