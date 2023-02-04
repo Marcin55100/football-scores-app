@@ -12,8 +12,16 @@
 
 <!-- Menu -->
 <mat-menu #menu="matMenu">
-  <button [routerLink]="'/auth'" mat-menu-item>Login</button>
-  <button [disabled]="isDisabled" [routerLink]="'/dashboard'" mat-menu-item>
+  <button *ngIf="!isLogged" [routerLink]="'/auth'" mat-menu-item>Login</button>
+  <button [disabled]="!isLogged" [routerLink]="'/dashboard'" mat-menu-item>
     My dashboard
+  </button>
+  <button
+    *ngIf="isLogged"
+    (click)="onLogout()"
+    [routerLink]="'/auth'"
+    mat-menu-item
+  >
+    Logout
   </button>
 </mat-menu>

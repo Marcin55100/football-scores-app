@@ -7,12 +7,16 @@ import { LoginInfoService } from 'src/app/core/services/login-info.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  isDisabled = true;
+  isLogged = true;
 
   constructor(private loginInfoService: LoginInfoService) {}
   ngOnInit(): void {
     this.loginInfoService.currentLogedMessage.subscribe(
-      (msg) => (this.isDisabled = !msg)
+      (msg) => (this.isLogged = msg)
     );
+  }
+
+  onLogout(){
+    this.loginInfoService.updateLoggedMesage(false);
   }
 }
