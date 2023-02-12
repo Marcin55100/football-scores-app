@@ -6,11 +6,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LoginInfoService {
   private isLoggedMessage = new BehaviorSubject(false);
-  currentLogedMessage = this.isLoggedMessage.asObservable();
+  private userNameMessage = new BehaviorSubject('');
+
+  currentLoggedMessage = this.isLoggedMessage.asObservable();
+  currentUserNameMessage = this.userNameMessage.asObservable();
 
   constructor() {}
 
-  updateLoggedMesage(message: boolean) {
+  updateLoggedMesage(message: boolean, userName: string = "") {
     this.isLoggedMessage.next(message);
+    this.userNameMessage.next(userName);
   }
 }

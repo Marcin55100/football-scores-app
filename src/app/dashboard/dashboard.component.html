@@ -1,1 +1,5 @@
-<h1>My dashboard for logged user</h1>
+<h1>Welcome to your dashboard: {{ userName }}</h1>
+
+<mat-card class="calendar">
+  <mat-calendar [(selected)]="selected"></mat-calendar>
+</mat-card>

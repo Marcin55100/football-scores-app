@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RegisterComponent } from './register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
@@ -29,7 +30,8 @@ import {
   MAT_SNACK_BAR_DEFAULT_OPTIONS,
 } from '@angular/material/snack-bar';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { FooterComponent } from './shared/footer/footer.component';
+import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     RegisterComponent,
     AuthenticationComponent,
     DashboardComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatCardModule,
     MatTabsModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule
   ],
   providers: [
     TeamsService,

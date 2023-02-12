@@ -5,8 +5,18 @@
       <mat-icon>menu</mat-icon>
     </button>
     <button mat-raised-button [routerLink]="'/home'" color="primary">
-      Football App
+      Home
     </button>
+    <span class="more-space">
+      <span>More on</span>
+      <button (click)="onMore()" mat-icon-button class="icon-btn">
+        <mat-icon svgIcon="football"></mat-icon>
+      </button>
+    </span>
+    <!-- <a class="visit" [attr.href]="url">
+      <img src="assets/flashscore_logo.png" />
+    </a> -->
+    <!-- <span class="visit">Visit FlashScore</span> -->
   </mat-toolbar>
 </p>
 

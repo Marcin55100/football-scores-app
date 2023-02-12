@@ -61,7 +61,7 @@ export class LoginComponent {
           if (res.status == HttpStatusCode.Accepted) {
             this.snackBar.open('Logged successfully', 'Close');
             this.isLogged = true;
-            this.loginInfoService.updateLoggedMesage(true);
+            this.loginInfoService.updateLoggedMesage(true, this.loginForm.value['email']);
             this.router.navigate(['dashboard']);
           }
         },
