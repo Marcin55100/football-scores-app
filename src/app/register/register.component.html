@@ -1,26 +1,48 @@
-<mat-form-field class="login-form" appearance="fill">
-  <mat-label>Name</mat-label>
-  <input matInput />
-</mat-form-field>
-<mat-form-field class="login-form" appearance="fill">
-  <mat-label>Surname</mat-label>
-  <input matInput />
-</mat-form-field>
-<mat-form-field class="login-form" appearance="fill">
-  <mat-label>Email</mat-label>
-  <input matInput />
-</mat-form-field>
-<mat-form-field class="login-form" appearance="fill">
-  <mat-label>Create password</mat-label>
-  <input matInput [type]="hide ? 'password' : 'text'" />
-  <button
-    mat-icon-button
-    matSuffix
-    (click)="hide = !hide"
-    [attr.aria-label]="'Hide password'"
-    [attr.aria-pressed]="hide"
-  >
-    <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+<form [formGroup]="registerForm">
+  <mat-form-field class="register-form" appearance="fill">
+    <mat-label>Name</mat-label>
+    <input formControlName="firstname" matInput />
+  </mat-form-field>
+  <mat-form-field class="register-form" appearance="fill">
+    <mat-label>Surname</mat-label>
+    <input formControlName="lastname" matInput />
+  </mat-form-field>
+  <mat-form-field class="register-form" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input formControlName="email" matInput />
+    <mat-hint
+      *ngIf="
+        registerForm.controls['email'].dirty &&
+        registerForm.hasError('required', 'email')
+      "
+      >Email is required</mat-hint
+    >
+  </mat-form-field>
+  <mat-form-field class="register-form" appearance="fill">
+    <mat-label>Create password</mat-label>
+    <input
+      formControlName="password"
+      matInput
+      [type]="hide ? 'password' : 'text'"
+    />
+    <mat-hint
+      *ngIf="
+        registerForm.controls['password'].dirty &&
+        registerForm.hasError('required', 'password')
+      "
+      >Password is required</mat-hint
+    >
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+  </mat-form-field>
+  <button (click)="onRegister()" mat-raised-button color="primary">
+    Register
   </button>
-</mat-form-field>
-<button mat-raised-button color="primary">Register</button>
+</form>

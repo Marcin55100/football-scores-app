@@ -9,7 +9,6 @@ import {
 import { AuthenticationService } from '../core/services/authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpStatusCode } from '@angular/common/http';
-import { LoginInfoService } from '../core/services/login-info.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +25,6 @@ export class LoginComponent {
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private authService: AuthenticationService,
-    private loginInfoService: LoginInfoService
   ) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
@@ -53,15 +51,18 @@ export class LoginComponent {
       }
     });
   }
+
   tryLogin() {
     this.authService
       .login(this.loginForm.value['email'], this.loginForm.value['password'])
       .subscribe({
         next: (res) => {
           if (res.status == HttpStatusCode.Accepted) {
+            console.log(res);
+            this.loginForm.reset();
+            this.authService.storeToken(res.body.token);
             this.snackBar.open('Logged successfully', 'Close');
             this.isLogged = true;
-            this.loginInfoService.updateLoggedMesage(true, this.loginForm.value['email']);
             this.router.navigate(['dashboard']);
           }
         },
