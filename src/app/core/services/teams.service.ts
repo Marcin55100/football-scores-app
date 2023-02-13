@@ -16,4 +16,10 @@ export class TeamsService {
     console.log(teams);
     return teams;
   }
+
+  getFavouriteTeam(email: string){
+    var team = this.http.get<any>('api/teams?email='+email);
+    console.log(team);
+    return team;
+  }
 }

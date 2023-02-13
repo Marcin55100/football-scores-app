@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginInfoService } from '../core/services/login-info.service';
+import { AuthenticationService } from '../core/services/authentication.service';
+import { TeamsService } from '../core/services/teams.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,13 +9,18 @@ import { LoginInfoService } from '../core/services/login-info.service';
 })
 export class DashboardComponent implements OnInit{
   userName:string;
+  favouriteTeam:string;
   selected: Date | null;
-  constructor(private loginInfoService: LoginInfoService) {}
+  constructor(private teamsService: TeamsService, private authService: AuthenticationService) {}
 
   ngOnInit(): void {
-    this.loginInfoService.currentUserNameMessage.subscribe(
-      (msg) => (this.userName = msg)
-    );
-  }
-
+    this.teamsService.getFavouriteTeam(this.authService.getLastLogin())
+    .subscribe({
+      next: (data) =>{
+        console.log("fetched data"+data);
+    this.favouriteTeam = data.name;
+      }
+    }
+      );
+}
 }
