@@ -10,17 +10,23 @@ import { TeamsService } from '../core/services/teams.service';
 export class DashboardComponent implements OnInit{
   userName:string;
   favouriteTeam:string;
+  scheduledMatch: string;
   selected: Date | null;
   constructor(private teamsService: TeamsService, private authService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.teamsService.getFavouriteTeam(this.authService.getLastLogin())
     .subscribe({
-      next: (data) =>{
+      next: (data) => {
         console.log("fetched data"+data);
-    this.favouriteTeam = data.name;
+        this.favouriteTeam = data.name;
       }
-    }
-      );
-}
+    });
+    this.teamsService.getFixture(this.favouriteTeam, this.selected)
+        .subscribe({
+          next: (fix) => {
+          this.scheduledMatch = fix;
+      }
+  });
+  }
 }

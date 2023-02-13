@@ -17,6 +17,10 @@ export class TeamsService {
     return teams;
   }
 
+  getFixture(team:string, date:Date){
+    return this.http.get<any>('api/standings/fixtures?team='+team+'datetime='+date);
+  }
+
   getFavouriteTeam(email: string){
     var team = this.http.get<any>('api/teams?email='+email);
     console.log(team);
