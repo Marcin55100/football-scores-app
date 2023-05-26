@@ -1,0 +1,15 @@
+{
+  "/api": {
+    "target": "http://localhost:5192",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/db": {
+    "target": "http://localhost:5202",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/db": "/api"
+    }
+  }
+}
