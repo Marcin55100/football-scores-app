@@ -32,6 +32,7 @@ import {
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import {DatePipe} from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +68,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatIconModule
   ],
   providers: [
+    DatePipe,
     TeamsService,
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
