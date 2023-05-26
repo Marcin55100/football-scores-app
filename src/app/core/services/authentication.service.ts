@@ -15,9 +15,9 @@ export class AuthenticationService {
   private isLoggedMessage = new BehaviorSubject(false);
   currentLoggedMessage = this.isLoggedMessage.asObservable();
 
-  constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {}
-  
-  register(firstname: string, lastname: string, phonenumber: string, email: string, password: string){
+  constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
+
+  register(firstname: string, lastname: string, phonenumber: string, email: string, password: string) {
     const registerUser: RegisterUser = {
       firstname: firstname,
       lastname: lastname,
@@ -27,11 +27,11 @@ export class AuthenticationService {
     };
     console.log(registerUser);
 
-    return this.http.post<any>('api/account/register', registerUser, {
+    return this.http.post<any>('db/account/register', registerUser, {
       observe: 'response',
     });
   }
-  
+
   login(email: string, password: string) {
     const loginUser: LoginUser = {
       email: email,
@@ -40,32 +40,32 @@ export class AuthenticationService {
     console.log(loginUser);
     this.lastLogin = email;
 
-    return this.http.post<any>('api/account/login', loginUser, {
+    return this.http.post<any>('db/account/login', loginUser, {
       observe: 'response',
     });
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
     this.isLoggedMessage.next(false);
     this.router.navigate(['auth']);
     this.snackBar.open('Logout succeded', 'Close');
   }
 
-  storeToken(tokenValue: string){
+  storeToken(tokenValue: string) {
     this.isLoggedMessage.next(true);
     localStorage.setItem('token', tokenValue);
   }
 
-  getToken(){
+  getToken() {
     localStorage.getItem('token');
   }
 
-  isLoggedIn(): boolean{
+  isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
   }
 
-  getLastLogin(): string{
+  getLastLogin(): string {
     return this.lastLogin;
   }
 }
