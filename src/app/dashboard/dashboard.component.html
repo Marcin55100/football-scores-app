@@ -1,15 +1,41 @@
-<h1>
-  Welcome to your dashboard!<b>{{ userName }}</b>
-</h1>
-<h2>
-  Your favourite team is <b>{{ favouriteTeam }}</b>
-</h2>
-<mat-card class="calendar">
-  <mat-calendar
-    [(selected)]="selected"
-    (selectedChange)="dateChanged(selected)"
-  ></mat-calendar>
-</mat-card>
-<h3>
-  Matches scheduled for selected date: <b>{{ scheduledMatch }}</b>
-</h3>
+<div class="grid-container">
+  <h1 class="mat-h1">
+    Welcome to your dashboard! <b>{{ userName }}</b>
+  </h1>
+  <h2>
+    Your favourite team is <b>{{ favouriteTeam }}</b>
+  </h2>
+  <mat-grid-list cols="{{ (cardLayout | async)?.columns }}" rowHeight="350px">
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.calendar.cols"
+      [rowspan]="(cardLayout | async)?.calendar.rows"
+    >
+      <app-card title="Calendar">
+        <app-match-calendar
+          [favouriteTeam]="favouriteTeam"
+        ></app-match-calendar>
+      </app-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.calendar.cols"
+      [rowspan]="(cardLayout | async)?.calendar.rows"
+    >
+      <app-card title="Players"> </app-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.calendar.cols"
+      [rowspan]="(cardLayout | async)?.calendar.rows"
+    >
+      <app-card title="Schedule"> </app-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.calendar.cols"
+      [rowspan]="(cardLayout | async)?.calendar.rows"
+    >
+      <app-card title="About"> </app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
