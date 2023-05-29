@@ -16,14 +16,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './user-auth/login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './user-auth/register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { AuthenticationComponent } from './authentication/authentication.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { AuthenticationComponent } from './user-auth/authentication/authentication.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatSnackBarModule,
@@ -32,20 +32,18 @@ import {
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import {DatePipe} from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CardComponent } from './card/card.component';
 import { MatchCalendarComponent } from './match-calendar/match-calendar.component';
+import { UserAuthModule } from './user-auth/user-auth.module';
 @NgModule({
   declarations: [
     AppComponent,
     MainTableComponent,
     HeaderComponent,
     HomeComponent,
-    LoginComponent,
-    RegisterComponent,
-    AuthenticationComponent,
     DashboardComponent,
     FooterComponent,
     CardComponent,
@@ -62,7 +60,6 @@ import { MatchCalendarComponent } from './match-calendar/match-calendar.componen
     HttpClientModule,
     MatMenuModule,
     MatButtonModule,
-    MatIconModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
@@ -73,7 +70,8 @@ import { MatchCalendarComponent } from './match-calendar/match-calendar.componen
     MatNativeDateModule,
     MatIconModule,
     MatGridListModule,
-    LayoutModule
+    LayoutModule,
+    UserAuthModule
   ],
   providers: [
     DatePipe,
@@ -88,4 +86,4 @@ import { MatchCalendarComponent } from './match-calendar/match-calendar.componen
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

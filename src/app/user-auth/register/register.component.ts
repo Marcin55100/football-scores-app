@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../core/services/authentication.service';
+import { AuthenticationService } from '../../core/services/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -40,10 +40,10 @@ export class RegisterComponent {
   tryRegister() {
     this.authService
       .register(this.registerForm.value['firstname'],
-       this.registerForm.value['lastname'],
-       "123123123",
-       this.registerForm.value['email'],
-       this.registerForm.value['password'])
+        this.registerForm.value['lastname'],
+        "123123123",
+        this.registerForm.value['email'],
+        this.registerForm.value['password'])
       .subscribe({
         next: (res) => {
           if (res.status == HttpStatusCode.Accepted) {
