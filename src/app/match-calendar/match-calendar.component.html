@@ -1,0 +1,7 @@
+<mat-calendar
+  [(selected)]="selected"
+  (selectedChange)="dateChanged(selected)"
+></mat-calendar>
+<h3>
+  Matches scheduled for selected date: <b>{{ scheduledMatch }}</b>
+</h3>

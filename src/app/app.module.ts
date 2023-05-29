@@ -33,6 +33,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import {DatePipe} from '@angular/common';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { LayoutModule } from '@angular/cdk/layout';
+import { CardComponent } from './card/card.component';
+import { MatchCalendarComponent } from './match-calendar/match-calendar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +48,8 @@ import {DatePipe} from '@angular/common';
     AuthenticationComponent,
     DashboardComponent,
     FooterComponent,
+    CardComponent,
+    MatchCalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,9 @@ import {DatePipe} from '@angular/common';
     MatSnackBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule,
+    LayoutModule
   ],
   providers: [
     DatePipe,
