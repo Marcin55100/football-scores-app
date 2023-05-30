@@ -1,0 +1,7 @@
+.container {
+  height: 550px;
+    /* height:50%; */
+    /* width: 100%; */
+    max-width: 100%;
+    overflow: auto;
+  }
