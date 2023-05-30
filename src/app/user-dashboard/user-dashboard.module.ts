@@ -15,13 +15,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { PlayersComponent } from './players/players.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     MatchCalendarComponent,
     CardComponent,
-    PlayersComponent
+    PlayersComponent,
+    ScheduleComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,26 @@
+<!-- <li *ngFor="let fixture of lastFixtures">
+  isHome={{ fixture.isHome }} Opponent={{ fixture.opponent }}
+</li> -->
+
+<div class="container mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="home">
+      <th mat-header-cell *matHeaderCellDef>Home</th>
+      <ng-container *matCellDef="let element">
+        <td mat-cell *ngIf="element.isHome">{{ favouriteTeam }}</td>
+        <td mat-cell *ngIf="!element.isHome">{{ element.opponent }}</td>
+      </ng-container>
+    </ng-container>
+
+    <ng-container matColumnDef="away">
+      <th mat-header-cell *matHeaderCellDef>Away</th>
+      <ng-container *matCellDef="let element">
+        <td mat-cell *ngIf="!element.isHome">{{ favouriteTeam }}</td>
+        <td mat-cell *ngIf="element.isHome">{{ element.opponent }}</td>
+      </ng-container>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
