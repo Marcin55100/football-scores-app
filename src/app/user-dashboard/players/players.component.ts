@@ -19,15 +19,13 @@ export class PlayersComponent implements OnInit {
 
   ngOnInit(): void {
     this.playersService
-      .getAll("Arsenal")//this.favouriteTeam")
+      .getAll("Arsenal")//TODO: this.favouriteTeam")
       .pipe(take(1))
       .subscribe((players) => {
         this.players = players;
         console.log(players);
         this.isDataAvailable = true;
         this.dataSource = new MatTableDataSource(players);
-        // this.dataSource = new MatTableDataSource(data);
-        // this.dataSource.paginator = this.paginator;
       });
   }
 

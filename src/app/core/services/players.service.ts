@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PlayerDto } from '../models/dtos/player-dto';
@@ -14,5 +13,5 @@ export class PlayersService {
     return players;
   }
 
-  constructor(private http: HttpClient, private datePipe: DatePipe) { }
+  constructor(private http: HttpClient) { }
 }
