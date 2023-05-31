@@ -1,4 +1,6 @@
 export interface Fixture {
-    isHome:boolean;
-    opponent:string;
+    team: string
+    opponent: string;
+    isHome: boolean;
+    date: Date;
 }

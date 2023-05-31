@@ -1,8 +1,8 @@
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { AuthenticationService } from '../core/services/authentication.service';
-import { TeamsService } from '../core/services/teams.service';
+import { AuthenticationService } from '../../user-auth/services/authentication.service';
+import { TeamsService } from '../../core/services/teams.service';
 import { catchError, throwError } from 'rxjs';
 
 @Component({
@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
           miniCard: { cols: 1, rows: 1 },
           chart: { cols: 1, rows: 2 },
           calendar: { cols: 1, rows: 2 },
+          table: { cols: 2, rows: 2 }
         };
       }
 
@@ -40,6 +41,7 @@ export class DashboardComponent implements OnInit {
         miniCard: { cols: 1, rows: 1 },
         chart: { cols: 2, rows: 2 },
         calendar: { cols: 1, rows: 2 },
+        table: { cols: 2, rows: 2 }
       };
     })
   );

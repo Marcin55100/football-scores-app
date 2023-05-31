@@ -12,6 +12,7 @@
     >
       <app-card title="Calendar">
         <app-match-calendar
+          class="calendar"
           [favouriteTeam]="favouriteTeam"
         ></app-match-calendar>
       </app-card>
@@ -21,19 +22,26 @@
       [colspan]="(cardLayout | async)?.calendar.cols"
       [rowspan]="(cardLayout | async)?.calendar.rows"
     >
-      <app-card title="Players"> </app-card>
+      <app-card title="Schedule">
+        <app-schedule [favouriteTeam]="favouriteTeam"></app-schedule>
+      </app-card>
     </mat-grid-tile>
 
     <mat-grid-tile
-      [colspan]="(cardLayout | async)?.calendar.cols"
-      [rowspan]="(cardLayout | async)?.calendar.rows"
+      [colspan]="(cardLayout | async)?.table.cols"
+      [rowspan]="(cardLayout | async)?.table.rows"
     >
-      <app-card title="Schedule"> </app-card>
+      <app-card title="Players">
+        <app-players
+          class="players"
+          [favouriteTeam]="favouriteTeam"
+        ></app-players>
+      </app-card>
     </mat-grid-tile>
 
     <mat-grid-tile
-      [colspan]="(cardLayout | async)?.calendar.cols"
-      [rowspan]="(cardLayout | async)?.calendar.rows"
+      [colspan]="(cardLayout | async)?.miniCard.cols"
+      [rowspan]="(cardLayout | async)?.miniCard.rows"
     >
       <app-card title="About"> </app-card>
     </mat-grid-tile>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TeamsService } from '../core/services/teams.service';
-import { AuthenticationService } from '../core/services/authentication.service';
+import { TeamsService } from '../../core/services/teams.service';
+import { AuthenticationService } from '../../user-auth/services/authentication.service';
 
 @Component({
   selector: 'app-match-calendar',

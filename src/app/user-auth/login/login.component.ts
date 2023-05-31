@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { AuthenticationService } from '../core/services/authentication.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpStatusCode } from '@angular/common/http';
 

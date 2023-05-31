@@ -25,6 +25,11 @@ export class TeamsService {
     return match;
   }
 
+  getLastFixtures(team: string, numberOfMatches: number) {
+    let matches = this.http.get<Fixture[]>('api/standings/fixtures/last?team=' + team + '&numberOfMatches=' + numberOfMatches);
+    return matches;
+  }
+
   getFavouriteTeam(email: string) {
     var team = this.http.get<any>('db/teams?email=' + email);
     console.log('your team is' + team);
