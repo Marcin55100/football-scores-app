@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs';
 import { PlayerDto } from 'src/app/core/models/dtos/player-dto';
@@ -7,9 +7,9 @@ import { PlayersService } from 'src/app/core/services/players.service';
 @Component({
   selector: 'app-players',
   templateUrl: './players.component.html',
-  styleUrls: ['./players.component.css']
+  styleUrls: ['./players.component.css'],
 })
-export class PlayersComponent implements OnInit {
+export class PlayersComponent implements OnChanges {
   public dataSource: MatTableDataSource<PlayerDto> = new MatTableDataSource();
   public displayedColumns: string[] = ['name', 'age', 'position', 'photo'];
 
@@ -17,9 +17,9 @@ export class PlayersComponent implements OnInit {
   players: PlayerDto[];
   isDataAvailable: boolean = false;
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     this.playersService
-      .getAll("Arsenal")//TODO: this.favouriteTeam")
+      .getAll(this.favouriteTeam)
       .pipe(take(1))
       .subscribe((players) => {
         this.players = players;
@@ -29,5 +29,5 @@ export class PlayersComponent implements OnInit {
       });
   }
 
-  constructor(private playersService: PlayersService) { }
+  constructor(private playersService: PlayersService) {}
 }

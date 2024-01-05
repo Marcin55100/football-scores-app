@@ -5,43 +5,36 @@ import { AuthenticationService } from '../../user-auth/services/authentication.s
 @Component({
   selector: 'app-match-calendar',
   templateUrl: './match-calendar.component.html',
-  styleUrls: ['./match-calendar.component.scss']
+  styleUrls: ['./match-calendar.component.scss'],
 })
 export class MatchCalendarComponent {
   selected: Date | null;
   scheduledMatch: string;
   @Input() favouriteTeam: string;
 
-  // ngOnInit(): void {
-  //   this.teamsService.getFavouriteTeam(this.authService.getLastLogin())
-  //     .subscribe({
-  //       next: (data) => {
-  //         console.log("fetched data" + data);
-  //         this.favouriteTeam = data.name;
-  //       }
-  //     });
-  // }
-
   dateChanged(date: any): void {
+    console.log('[Calendar] favourite team data:' + this.favouriteTeam);
     console.log(date);
-    this.teamsService.getFixture(this.favouriteTeam, this.selected)
-      .subscribe({
-        next: (fix) => {
-          console.log('match for ' + this.favouriteTeam + 'is with ' + fix.opponent);
-          if (fix.isHome) {
-            this.scheduledMatch = this.favouriteTeam + ' - ' + fix.opponent;
-          }
-          else {
-            this.scheduledMatch = fix.opponent + ' - ' + this.favouriteTeam;
-          }
-        },
-        error: (err) => {
-          console.log('error while fetching fixtues');
-          this.scheduledMatch = 'No matches';
+    this.teamsService.getFixture(this.favouriteTeam, this.selected).subscribe({
+      next: (fix) => {
+        console.log(
+          'match for ' + this.favouriteTeam + 'is with ' + fix.opponent
+        );
+        if (fix.isHome) {
+          this.scheduledMatch = this.favouriteTeam + ' - ' + fix.opponent;
+        } else {
+          this.scheduledMatch = fix.opponent + ' - ' + this.favouriteTeam;
         }
-      });
+      },
+      error: (err) => {
+        console.log('error while fetching fixtues');
+        this.scheduledMatch = 'No matches';
+      },
+    });
   }
 
-  constructor(private teamsService: TeamsService, private authService: AuthenticationService) { }
-
+  constructor(
+    private teamsService: TeamsService,
+    private authService: AuthenticationService
+  ) {}
 }

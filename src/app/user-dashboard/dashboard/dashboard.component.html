@@ -2,9 +2,29 @@
   <h1 class="mat-h1">
     Welcome to your dashboard! <b>{{ userName }}</b>
   </h1>
-  <h2>
-    Your favourite team is <b>{{ favouriteTeam }}</b>
-  </h2>
+
+  <!-- Choose value section -->
+  <mat-form-field>
+    <mat-label>Favourite team</mat-label>
+    <mat-select
+      (selectionChange)="onSelectedTeamChanged($event)"
+      [(value)]="favouriteTeam"
+    >
+      <mat-option *ngFor="let team of teamNames" [value]="team">{{
+        team
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Season</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let season of seasons" [value]="season">{{
+        season
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Card layout section -->
   <mat-grid-list cols="{{ (cardLayout | async)?.columns }}" rowHeight="350px">
     <mat-grid-tile
       [colspan]="(cardLayout | async)?.calendar.cols"
@@ -19,23 +39,23 @@
     </mat-grid-tile>
 
     <mat-grid-tile
-      [colspan]="(cardLayout | async)?.calendar.cols"
-      [rowspan]="(cardLayout | async)?.calendar.rows"
-    >
-      <app-card title="Schedule">
-        <app-schedule [favouriteTeam]="favouriteTeam"></app-schedule>
-      </app-card>
-    </mat-grid-tile>
-
-    <mat-grid-tile
       [colspan]="(cardLayout | async)?.table.cols"
       [rowspan]="(cardLayout | async)?.table.rows"
     >
       <app-card title="Players">
         <app-players
-          class="players"
           [favouriteTeam]="favouriteTeam"
+          class="players"
         ></app-players>
+      </app-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile
+      [colspan]="(cardLayout | async)?.calendar.cols"
+      [rowspan]="(cardLayout | async)?.calendar.rows"
+    >
+      <app-card title="Schedule">
+        <app-schedule [favouriteTeam]="favouriteTeam"></app-schedule>
       </app-card>
     </mat-grid-tile>
 

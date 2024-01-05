@@ -11,7 +11,7 @@ import { Fixture } from '../models/fixture';
   providedIn: 'root',
 })
 export class TeamsService {
-  constructor(private http: HttpClient, private datePipe: DatePipe) { }
+  constructor(private http: HttpClient, private datePipe: DatePipe) {}
 
   getTeams() {
     var teams = this.http.get<TeamData[]>('api/standings');
@@ -20,13 +20,20 @@ export class TeamsService {
   }
 
   getFixture(team: string, date: Date) {
-    let formattedDate = this.datePipe.transform(date, "yyyy-MM-dd");
-    let match = this.http.get<Fixture>('api/standings/fixtures?team=' + team + '&dateTime=' + formattedDate);
+    let formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
+    let match = this.http.get<Fixture>(
+      'api/fixtures?teamName=' + team + '&dateTime=' + formattedDate
+    );
     return match;
   }
 
   getLastFixtures(team: string, numberOfMatches: number) {
-    let matches = this.http.get<Fixture[]>('api/standings/fixtures/last?team=' + team + '&numberOfMatches=' + numberOfMatches);
+    let matches = this.http.get<Fixture[]>(
+      'api/fixtures/last?teamName=' +
+        team +
+        '&numberOfMatches=' +
+        numberOfMatches
+    );
     return matches;
   }
 

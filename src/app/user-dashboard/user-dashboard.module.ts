@@ -16,6 +16,8 @@ import { PlayersComponent } from './players/players.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ScheduleComponent } from './schedule/schedule.component';
     MatGridListModule,
     LayoutModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule,
+    MatFormFieldModule
   ]
 })
 export class UserDashboardModule { }
