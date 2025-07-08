@@ -23,6 +23,8 @@ import { TeamsService } from './core/services/teams.service';
 import { UserAuthModule } from './user-auth/user-auth.module';
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
 import { MainTableComponent } from './main-table/main-table.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { MainTableComponent } from './main-table/main-table.component';
     MatIconModule,
     LayoutModule,
     UserAuthModule,
-    UserDashboardModule
+    UserDashboardModule,
+    MatSelectModule,
+    MatFormFieldModule,
   ],
   providers: [
     DatePipe,
@@ -61,4 +65,4 @@ import { MainTableComponent } from './main-table/main-table.component';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

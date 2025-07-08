@@ -17,7 +17,10 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Season</mat-label>
-    <mat-select>
+    <mat-select
+      (selectionChange)="onSelectedSeasonChanged($event)"
+      [(value)]="selectedSeason"
+    >
       <mat-option *ngFor="let season of seasons" [value]="season">{{
         season
       }}</mat-option>
@@ -55,7 +58,10 @@
       [rowspan]="(cardLayout | async)?.calendar.rows"
     >
       <app-card title="Schedule">
-        <app-schedule [favouriteTeam]="favouriteTeam"></app-schedule>
+        <app-schedule
+          [favouriteTeam]="favouriteTeam"
+          [selectedSeason]="selectedSeason"
+        ></app-schedule>
       </app-card>
     </mat-grid-tile>
 

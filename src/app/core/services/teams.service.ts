@@ -13,8 +13,8 @@ import { Fixture } from '../models/fixture';
 export class TeamsService {
   constructor(private http: HttpClient, private datePipe: DatePipe) {}
 
-  getTeams() {
-    var teams = this.http.get<TeamData[]>('api/standings');
+  getTeams(season: string) {
+    var teams = this.http.get<TeamData[]>('api/standings?season=' + season);
     console.log(teams);
     return teams;
   }
@@ -27,12 +27,14 @@ export class TeamsService {
     return match;
   }
 
-  getLastFixtures(team: string, numberOfMatches: number) {
+  getLastFixtures(team: string, numberOfMatches: number, season: number) {
     let matches = this.http.get<Fixture[]>(
       'api/fixtures/last?teamName=' +
         team +
         '&numberOfMatches=' +
-        numberOfMatches
+        numberOfMatches +
+        '&season=' +
+        season
     );
     return matches;
   }
