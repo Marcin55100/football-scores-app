@@ -14,11 +14,18 @@ import { MatSelectChange } from '@angular/material/select';
 })
 export class DashboardComponent implements OnInit {
   userName: string;
-  favouriteTeam: string;
+  favouriteTeam: string = 'Arsenal';
+  selectedSeason: string = '2024';
   teamNames: string[] = [];
   seasons: string[] = [];
 
   ngOnInit(): void {
+    this.seasonsService.getSeasons().subscribe({
+      next: (data) => {
+        console.log('seasons fetched: ' + data);
+        this.seasons = data;
+      },
+    });
     this.teamsService
       .getFavouriteTeam(this.authService.getLastLogin())
       .subscribe({
@@ -27,21 +34,19 @@ export class DashboardComponent implements OnInit {
           this.favouriteTeam = data.name;
         },
       });
-    this.teamsService.getTeams().subscribe({
+    this.teamsService.getTeams(this.selectedSeason).subscribe({
       next: (data) => {
         data.forEach((x) => this.teamNames.push(x.name));
-      },
-    });
-    this.seasonsService.getSeasons().subscribe({
-      next: (data) => {
-        console.log('seasons fetched: ' + data);
-        this.seasons = data;
       },
     });
   }
 
   onSelectedTeamChanged($event: MatSelectChange) {
     this.favouriteTeam = $event.value;
+  }
+
+  onSelectedSeasonChanged($event: MatSelectChange) {
+    this.selectedSeason = $event.value;
   }
 
   cardLayout = this.breakpointObserver.observe(Breakpoints.Handset).pipe(

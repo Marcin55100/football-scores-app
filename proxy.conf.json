@@ -5,7 +5,7 @@
     "logLevel": "debug"
   },
   "/db": {
-    "target": "http://localhost:5000",
+    "target": "http://localhost:5202",
     "secure": false,
     "logLevel": "debug",
     "pathRewrite": {

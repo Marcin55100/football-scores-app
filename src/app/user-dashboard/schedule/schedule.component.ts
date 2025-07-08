@@ -13,14 +13,17 @@ export class ScheduleComponent implements OnChanges {
   public dataSource: MatTableDataSource<Fixture> = new MatTableDataSource();
   public displayedColumns: string[] = ['date', 'home', 'away'];
   @Input() favouriteTeam: string;
+  @Input() selectedSeason: string;
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.teamsService.getLastFixtures(this.favouriteTeam, 3).subscribe({
-      next: (data) => {
-        console.log('fetched data' + data);
-        this.dataSource = new MatTableDataSource(data);
-      },
-    });
+    this.teamsService
+      .getLastFixtures(this.favouriteTeam, 10, +this.selectedSeason)
+      .subscribe({
+        next: (data) => {
+          console.log('fetched data' + data);
+          this.dataSource = new MatTableDataSource(data);
+        },
+      });
   }
 
   constructor(private teamsService: TeamsService, public datePipe: DatePipe) {}
